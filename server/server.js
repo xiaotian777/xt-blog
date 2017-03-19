@@ -12,9 +12,9 @@ let app = express();
 
 app.use(bodyParser.json());
 
-app.all('/', function(req, res, next) {
+app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-auth");
   next();
 });
 
@@ -141,6 +141,7 @@ app.post('/users', (req, res) => {
 
 
 app.post('/users/login', (req, res) => {
+  console.log(req);
   let data = {email: req.body.email, password: req.body.password};
   
   User.findByCredentials(data.email, data.password)
