@@ -18,6 +18,21 @@ var Post = mongoose.model('Post', {
     trim: true,
     default: null
   },
+  post_id: {
+    type: String,
+    trim: true,
+    required: true,
+    unique: true
+  },
+  assets_url: {
+    type: Array,
+    default: []
+  },
+  hero_url: {
+    type: String,
+    trim: true,
+    defualt: null
+  },
   _createdAt: {
     type: Number,
     default: new Date().getTime()
