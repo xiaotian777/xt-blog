@@ -3,10 +3,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundle.js'
+    filename: 'index.bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -19,6 +20,10 @@ module.exports = {
         })
       },
       {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loaders: ['file-loader?publicPath=/']
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader'
@@ -26,22 +31,26 @@ module.exports = {
     ]
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, "dist"),
     compress: true,
     stats: 'errors-only',
-    open: true
+    open: true,
+    stats: {
+      assets: true
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Project Demo',
-      // minify: {
-      //   collapseWhitespace: true
-      // },
+      minify: {
+        collapseWhitespace: true
+      },
       hash: true,
-      template: './src/index.ejs'
+      template: './src/index.html'
     }),
     new ExtractTextPlugin({
-      filename: 'app.css',
+      filename: 'index.css',
       disable: false,
       allChunks: true
     })

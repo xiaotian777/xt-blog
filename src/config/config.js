@@ -1,0 +1,1 @@
+export const ROOT_URL = 'http://api.xtdev.tech' || 'http://localhost:3000';
