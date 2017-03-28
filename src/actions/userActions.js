@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './actionTypes';
+import { ROOT_URL } from '../config/config';
 
-const ROOT_URL = 'http://localhost:3000';
 
 function requestLogin() {
   return {
