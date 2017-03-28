@@ -25,7 +25,6 @@ class PostsListPage extends React.Component {
 
   genPostList() {
     const { posts } = this.props;
-    console.log(posts);
     if (posts) {
       return posts.map(post => (
         
