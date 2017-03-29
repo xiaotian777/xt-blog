@@ -46,11 +46,9 @@ class PostsListPage extends React.Component {
               </div>
             </Link>
           </div>
-        
       ));
     }
   }
-  
 }
 
 function mapStateToProps(state, ownProps) {
