@@ -14,14 +14,18 @@ module.exports = {
       {
         test: /\.scss$/, 
         use: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: ['css-loader', 'sass-loader'],
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader'],
           publicPath: '/dist'
         })
       },
       {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-        loaders: ['file-loader?publicPath=/']
+        use: ['file-loader?publicPath=/']
+      },
+      {
+        test: /\.ico$/, 
+        use: 'file-loader?name=[name].[ext]'
       },
       {
         test: /\.js$/,

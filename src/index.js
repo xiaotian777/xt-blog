@@ -1,5 +1,5 @@
-const css = require('./index.scss');
-
+import css from './index.scss';
+import favicon from './favicon.ico'
 import React from 'react';
 import {render} from 'react-dom';
 import { Router, browserHistory } from 'react-router';
