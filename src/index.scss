@@ -1,0 +1,47 @@
+@import "./styles/base/fonts.scss";
+@import "./imgs/ionicons/css/ionicons.min.css";
+@import "../node_modules/normalize.css/normalize";
+@import "./styles/base/mixins";
+@import "./styles/base/global";
+@import "./styles/base/wrapper";
+@import "./styles/base/variables";
+@import "./styles/base/code-theme";
+
+@import "./styles/modules/site-header";
+@import "./styles/modules/primary-nav";
+@import "./styles/modules/large-hero";
+@import "./styles/modules/post-detail";
+@import "./styles/modules/new-post-form";
+@import "./styles/modules/markdown";
+@import "./styles/modules/footer";
+@import "./styles/modules/post-list";
+
+.example-enter {
+  opacity: 0.01;
+  transform: translateX(-100%);
+  position: absolute;
+  width: 100%;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: all 1000ms ease;
+  position: absolute;
+  transform: translateX(0%);
+  width: 100%;
+}
+
+.example-leave {
+  opacity: 1;
+  transform: scaleX(1) translateX(0);
+  position: absolute;
+  width: 100%;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: all 1000ms ease-in;
+  position: absolute;
+  transform: translateX(200%);
+  width: 100%;
+}

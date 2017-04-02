@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: Roboto, "Microsoft YaHei", "微软雅黑", 
+             STXihei, "华文细黑", sans-serif;
+  color: #555;
+}
+
+a {
+  text-decoration: none;
+}
+
+.content {
+  min-height: 100vh;
+}
