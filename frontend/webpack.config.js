@@ -35,6 +35,7 @@ module.exports = {
     ]
   },
   devServer: {
+    host: '0.0.0.0',
     historyApiFallback: true,
     contentBase: path.join(__dirname, "dist"),
     compress: true,
