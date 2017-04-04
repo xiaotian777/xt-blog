@@ -1,0 +1,60 @@
+version: '2'
+
+services:
+
+  fe:
+    build: 
+      context: ./frontend
+      dockerfile: ./dockerfile
+    ports:
+      - "8080:8080"
+    working_dir: /app
+    networks:
+      - xt-blog
+    command:
+      nginx -g 'daemon off;'
+  
+  be:
+    build: 
+      context: ./backend
+      dockerfile: ./dockerfile
+    environment:
+      - JWT_SECRET='no-secret'
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    working_dir: /app
+    volumes: 
+      - ~/xt-blog/uploads:/app/server/uploads
+    networks:
+      - xt-blog
+    command:
+      pm2 start --no-daemon server/server.js
+
+  mongodb:
+    image: mongo:3.5.5
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/xt-blog/db-data:/data/db
+    networks:
+      - xt-blog
+  
+  server:
+    build: 
+      context: ./nginx
+      dockerfile: ./dockerfile
+    depends_on:
+      - fe
+      - be
+    ports:
+      - "80:80"
+    networks:
+      - xt-blog
+    command:
+      nginx -g 'daemon off;'
+  
+networks:
+  xt-blog:
+    driver: bridge

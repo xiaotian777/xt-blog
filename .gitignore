@@ -3,5 +3,4 @@ frontend/.vscode/
 frontend/dist/
 
 backend/node_modules/
-backend/server/uploads/
-
+backend/server/uploads/*
